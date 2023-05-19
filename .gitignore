@@ -1,3 +1,6 @@
 # .gitignore
 
 secrets.ini
+.idea/*
+.idea/
+.idea

@@ -1,7 +1,7 @@
 import argparse
 BASE_WEATHER_API_URL = "http://api.openweathermap.org/data/2.5/weather"
 import json
-from configparser import ConfigParser
+from configparser import ConfigParser #
 from urllib import parse, request,error
 import sys
 from pprint import pp
@@ -31,19 +31,19 @@ def read_user_cli_args():
     Returns:
         argparse.Namespace: Populated namespace object
     """
-    parser = argparse.ArgumentParser(
+    argname = argparse.ArgumentParser(
         description="gets weather and temperature information for a city"
     )
-    parser.add_argument(
+    argname.add_argument(
         "city", nargs="+", type=str, help="enter the city name"
     )
-    parser.add_argument(
+    argname.add_argument(
         "-i",
         "--imperial",
         action="store_true",
         help="display the temperature in imperial units",
     )
-    return parser.parse_args()
+    return argname.parse_args()
 # Line 19 opens a conditional block after checking for Python’s "__main__" namespace, which allows you to
 # define code that should run when you’re executing weather.py as a script.
 # Line 20 calls read_user_cli_args(), effectively running the CLI parsing code logic you wrote further up.
@@ -68,6 +68,7 @@ def build_weather_query(city_input, imperial=False):
         f"{BASE_WEATHER_API_URL}?q={url_encoded_city_name}"
         f"&units={units}&appid={api_key}"
     )
+    print("URL :: ", url)
     return url
 def get_weather_data(query_url):
     """Makes an API request to a URL and returns the data as a Python object.
